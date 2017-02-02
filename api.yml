@@ -11,7 +11,7 @@ info:
 
   version: "1.0.0"
   title: RSS Feed Aggregator
-host: 91.121.9.68:80
+host: 91.121.9.68:8080
 basePath: /swagger-jaxrs-server-1.0.0
 schemes:
   - http
