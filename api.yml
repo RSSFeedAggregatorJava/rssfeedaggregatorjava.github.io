@@ -99,6 +99,8 @@ paths:
       responses:
         default:
           description: successful operation
+      security:
+      - api_key: []
   /feeds:
     get:
       tags:
@@ -130,11 +132,12 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: query
+        - in: body
           name: feedUrl
           description: url of feed that user want to subscribe
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         "200":
           description: successful operation
@@ -145,6 +148,8 @@ paths:
           description: url doesn't correspond to valid rss file
         "404":
           description: url inaccessible
+      security:
+      - api_key: []
     delete:
       tags:
         - feed
@@ -162,7 +167,8 @@ paths:
           description: successful unsubscribed
         "404":
           description: feed doesn't exist
-
+      security:
+      - api_key: []
   /feeds/{feedId}:
     get:
       tags:
@@ -184,7 +190,6 @@ paths:
         "200":
           description: successful operation
           schema:
-            description: details of the feed
             $ref: "#/definitions/Feed"
         "400":
           description: Invalid ID supplied
